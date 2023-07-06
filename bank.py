@@ -1,25 +1,22 @@
-from abc import ABC, abstractmethod
-
-from transaction import Transaction
 from users import Admin, General
 
 
 class Bank:
     def __init__(self, bank_name) -> None:
         self.bank_name = bank_name
-        self.__balance = 10000
-        self.__total_loan = 5000
+        self.__balance = 0
+        self.__total_loan = 0
         self.__is_loan_available = True
         self.admins = []
         self.accounts = []
 
-    def create_admin_account(self, user_name, email, bank_instance):
-        account = Admin(user_name, email, bank_instance)
+    def create_admin_account(self, user_name, email, bank_name):
+        account = Admin(user_name, email, bank_name)
         self.admins.append(account)
         return account
 
-    def create_General_account(self, user_name, email):
-        account = General(user_name, email)
+    def create_General_account(self, user_name, email, bank_name):
+        account = General(user_name, email, bank_name)
         self.accounts.append(account)
         return account
 
@@ -29,7 +26,14 @@ class Bank:
 
     @balance.setter
     def balance(self, transaction):
-        self.__balance += transaction.amount
+        amount = transaction.amount
+        if transaction.type == 'deposit':
+            self.__balance += amount
+        elif transaction.type == 'withdrawal':
+            self.__balance -= amount
+        elif transaction.type == 'loan':
+            self.__balance -= amount
+            self.__total_loan += amount
 
     @property
     def is_loan_available(self):
