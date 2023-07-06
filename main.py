@@ -18,17 +18,24 @@ def main():
     Angel_pria = city_bank.create_General_account(
         "Angel_pria", "pria@gmail.com", city_bank)
 
-    Hasan.deposit(500)
     Hasan.deposit(5000)
     Jamin.deposit(5000)
+
     Hasan.withdrawal(1500)
-    # Dr_Kamal.inactive_loan_stats()
+
+    Dr_Kamal.inactive_loan_stats()
+    Dr_Kamal.active_loan_status()
     Hasan.get_loan()
+
     Jamin.transfer(999, Angel_pria)
-    Jamin.withdrawal(1000)
+
+    print("Hasan's Transaction History\n==============================")
+    Hasan.transaction_history()
+    print("Hasan's current balance:", Hasan.balance, "\n")
+
+    print("Jamin's Transaction History\n==============================")
     Jamin.transaction_history()
-    print("Hasan's current balance:", Hasan.balance)
-    # Hasan.transaction_history()
+    print("Jamin's current balance:", Jamin.balance, "\n")
 
     print("========City Bank=========")
     print("Total Loan Given:", Dr_Kamal.total_loan())
