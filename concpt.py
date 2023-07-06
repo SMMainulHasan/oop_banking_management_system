@@ -17,7 +17,7 @@ If a user is unable to withdraw the amount of money he has deposited in the bank
 Admin functions->  
 1. Can create an account
 2. Can check the total available balance of the bank.
-3.Can check the total loan amount.
+3. Can check the total loan amount.
 4. Can on or off the loan feature of the bank.
 
 
